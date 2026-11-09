@@ -51,7 +51,7 @@ The business is based in Quilicura, Santiago, Chile. Visitors commonly arrive fr
 ## Evidence on Hand
 
 - Confirmed business information and prices are provided by the owner.
-- The existing JPEG product photos are development-only. Do not publish the site with them; the owner will provide optimized WebP files using approved names.
+- The catalog currently uses WebP files from `imagenes/webp/`. They use working filenames rather than the approved final names below, and their file sizes exceed the optimization targets; keep optimizing before treating the photo set as final.
 - Target image sizes: hero 1440 px wide and at most 250 KB; secondary hero photos 800 px on the longest side and at most 120 KB each; catalog photos 900 px on the longest side and at most 150 KB each.
 - The owner approved these future asset names: `cheesecake-portada.webp`, `cheesecake-secundaria-1.webp`, `cheesecake-secundaria-2.webp`, `pie-limon.webp`, `queque-vainilla.webp`, and `tarta-manzana.webp`. Do not rename the current files.
 - No approved testimonials or reviews have been supplied.
