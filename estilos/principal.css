@@ -1034,32 +1034,6 @@ html:not(.js) .armador__solo-js {
   line-height: 1.7;
 }
 
-.datos-transferencia {
-  display: grid;
-  gap: 0.6rem;
-  margin: 1.25rem 0 0;
-  padding: 1.1rem;
-  border-left: 3px solid var(--tostado);
-  background: #f5eee6;
-}
-
-.datos-transferencia div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.35rem 1rem;
-}
-
-.datos-transferencia dt {
-  color: var(--tinta-suave);
-}
-
-.datos-transferencia dd {
-  margin: 0;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-
 .nosotros p:not(.sobrelinea) {
   max-width: 65ch;
   margin-bottom: 0;

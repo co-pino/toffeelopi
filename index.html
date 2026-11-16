@@ -5,16 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Postres de casa para compartir en Quilicura: cheesecake, pie de limón, queque y tarta de manzana. Revisa precios y pide por WhatsApp."
+      content="Postres de casa en Quilicura: cheesecake de receta familiar, pie de limón, queque y tarta de manzana. Revisa precios y pide por WhatsApp."
     />
+    <link rel="canonical" href="https://toffeelopi.vercel.app/" />
     <meta name="theme-color" content="#9B1B30" />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="Toffeelopi" />
+    <meta property="og:url" content="https://toffeelopi.vercel.app/" />
     <meta property="og:title" content="Toffeelopi — Postres de casa en Quilicura" />
     <meta
       property="og:description"
-      content="Cheesecake, pie de limón, queque y tarta de manzana para compartir en Quilicura. Pide por WhatsApp."
+      content="Postres de casa en Quilicura: cheesecake de receta familiar, pie de limón, queque y tarta de manzana. Pide por WhatsApp."
     />
-    <title>Toffeelopi - Postres de casa en Quilicura</title>
+    <meta
+      property="og:image"
+      content="https://toffeelopi.vercel.app/imagenes/webp/cheesecake_head_iawebp.webp"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://toffeelopi.vercel.app/imagenes/webp/cheesecake_head_iawebp.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1376" />
+    <meta property="og:image:height" content="768" />
+    <meta
+      property="og:image:alt"
+      content="Cheesecake familiar con salsa de berries sobre una mesa clara"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Toffeelopi — Postres de casa en Quilicura" />
+    <meta
+      name="twitter:description"
+      content="Postres de casa en Quilicura: cheesecake de receta familiar, pie de limón, queque y tarta de manzana. Pide por WhatsApp."
+    />
+    <meta
+      name="twitter:image"
+      content="https://toffeelopi.vercel.app/imagenes/webp/cheesecake_head_iawebp.webp"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Cheesecake familiar con salsa de berries sobre una mesa clara"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Toffeelopi — Postres de casa en Quilicura</title>
     <link
       rel="preload"
       as="image"
@@ -30,17 +64,64 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Toffeelopi",
-        "description": "Postres de casa para compartir en Quilicura.",
-        "telephone": "+56967162487",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Quilicura",
-          "addressRegion": "Santiago",
-          "addressCountry": "CL"
-        },
-        "sameAs": ["https://www.instagram.com/toffedulceria/"]
+        "@graph": [
+          {
+            "@type": "Bakery",
+            "@id": "https://toffeelopi.vercel.app/#panaderia",
+            "name": "Toffeelopi",
+            "url": "https://toffeelopi.vercel.app/",
+            "description": "Postres de casa para compartir en Quilicura.",
+            "telephone": "+56967162487",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Quilicura",
+              "addressRegion": "Región Metropolitana de Santiago",
+              "addressCountry": "CL"
+            },
+            "areaServed": {
+              "@type": "City",
+              "name": "Quilicura"
+            },
+            "sameAs": ["https://www.instagram.com/toffedulceria/"]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿Qué postres ofrecen?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cheesecake, pie de limón, queque de vainilla y tarta de manzana."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cómo sé cuándo hay disponibilidad?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "El cheesecake, el pie de limón y la tarta se ofrecen en fechas anunciadas. El queque está disponible siempre. Escríbenos por WhatsApp para consultar."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Puedo elegir cómo servir la salsa?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí, la salsa del cheesecake puede ir aparte o sobre el cheesecake."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cómo pago?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Puedes transferir al confirmar tu pedido y enviar el comprobante por WhatsApp, o pagar en efectivo al recibir."
+                }
+              }
+            ]
+          }
+        ]
       }
     </script>
     <script type="module" src="/scripts/principal.js"></script>
@@ -179,6 +260,9 @@
                   </div>
                   <a
                     class="boton-elegir"
+                    aria-label="Pedir cheesecake normal de 28 cm por WhatsApp"
+                    data-producto="cheesecake"
+                    data-variante="normal"
                     href="https://wa.me/56967162487?text=Hola%2C%20quiero%20encargar%20un%20cheesecake%20%28Normal%20%C2%B7%2028%20cm%29.%20%C2%BFMe%20indican%20la%20pr%C3%B3xima%20fecha%20disponible%3F%20%28Pedido%20desde%20la%20web%29"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -190,6 +274,9 @@
                   </div>
                   <a
                     class="boton-elegir"
+                    aria-label="Pedir cheesecake chico de 20 cm por WhatsApp"
+                    data-producto="cheesecake"
+                    data-variante="chico"
                     href="https://wa.me/56967162487?text=Hola%2C%20quiero%20encargar%20un%20cheesecake%20%28Chico%20%C2%B7%2020%20cm%29.%20%C2%BFMe%20indican%20la%20pr%C3%B3xima%20fecha%20disponible%3F%20%28Pedido%20desde%20la%20web%29"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -202,6 +289,9 @@
                   <span class="producto__foto-trozo" aria-hidden="true"></span>
                   <a
                     class="boton-elegir"
+                    aria-label="Pedir un trozo de cheesecake por WhatsApp"
+                    data-producto="cheesecake"
+                    data-variante="trozo"
                     href="https://wa.me/56967162487?text=Hola%2C%20quiero%20encargar%20un%20cheesecake%20%28Trozo%29.%20%C2%BFMe%20indican%20la%20pr%C3%B3xima%20fecha%20disponible%3F%20%28Pedido%20desde%20la%20web%29"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -232,6 +322,9 @@
                   </div>
                   <a
                     class="boton-elegir"
+                    aria-label="Pedir pie de limón de 28 cm por WhatsApp"
+                    data-producto="pie-limon"
+                    data-variante="28-cm"
                     href="https://wa.me/56967162487?text=Hola%2C%20quiero%20encargar%20un%20pie%20de%20lim%C3%B3n%20%2828%20cm%29.%20%C2%BFMe%20indican%20la%20pr%C3%B3xima%20fecha%20disponible%3F%20%28Pedido%20desde%20la%20web%29"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -265,6 +358,9 @@
                   </div>
                   <a
                     class="boton-elegir"
+                    aria-label="Pedir queque grande de vainilla por WhatsApp"
+                    data-producto="queque-vainilla"
+                    data-variante="grande"
                     href="https://wa.me/56967162487?text=Hola%2C%20quiero%20encargar%20un%20queque%20de%20vainilla%20%28Grande%29.%20%28Pedido%20desde%20la%20web%29"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -296,6 +392,9 @@
                   </div>
                   <a
                     class="boton-elegir"
+                    aria-label="Pedir tarta de manzana de 28 cm por WhatsApp"
+                    data-producto="tarta-manzana"
+                    data-variante="28-cm"
                     href="https://wa.me/56967162487?text=Hola%2C%20quiero%20encargar%20una%20tarta%20de%20manzana%20%2828%20cm%29.%20%C2%BFMe%20indican%20la%20pr%C3%B3xima%20fecha%20disponible%3F%20%28Pedido%20desde%20la%20web%29"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -394,13 +493,6 @@
               Transfiere al confirmar el pedido y envía el comprobante por WhatsApp. También puedes
               pagar en efectivo al recibir.
             </p>
-            <dl class="datos-transferencia">
-              <div><dt>Titular</dt><dd>Constanza Pino</dd></div>
-              <div><dt>Banco</dt><dd>BancoEstado</dd></div>
-              <div><dt>Tipo de cuenta</dt><dd>CuentaRUT</dd></div>
-              <div><dt>Número de cuenta</dt><dd>21727422-2</dd></div>
-              <div><dt>RUT</dt><dd>21727422-2</dd></div>
-            </dl>
           </div>
         </div>
       </section>
@@ -453,7 +545,7 @@
     </main>
 
     <footer class="pie">
-      <a class="marca" href="#inicio">Toffeelopi</a>
+      <a class="marca" href="#inicio" aria-label="Volver al inicio de Toffeelopi">Toffeelopi</a>
       <p>Quilicura, Santiago</p>
     </footer>
   </body>

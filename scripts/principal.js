@@ -38,107 +38,11 @@ function fechasFuturas() {
     .sort((a, b) => a.fechaLocal - b.fechaLocal);
 }
 
-function crearImagen(producto) {
-  if (!producto.imagen) {
-    return null;
-  }
-
-  const figura = document.createElement("figure");
-  figura.className = "producto__foto";
-  const imagen = document.createElement("img");
-  imagen.src = producto.imagen;
-  imagen.srcset = `${producto.imagen} ${producto.anchoImagen}w`;
-  imagen.sizes = "(min-width: 1200px) 350px, (min-width: 720px) 46vw, calc(100vw - 40px)";
-  imagen.alt = `Fotografía de ${producto.nombre.toLowerCase()}`;
-  imagen.width = producto.anchoImagen;
-  imagen.height = producto.altoImagen;
-  imagen.loading = "lazy";
-  imagen.decoding = "async";
-  figura.append(imagen);
-  return figura;
-}
-
-function crearTarjetaProducto(producto) {
-  const tarjeta = document.createElement("article");
-  tarjeta.className = "producto revelar";
-
-  const imagen = crearImagen(producto);
-  if (imagen) {
-    tarjeta.append(imagen);
-  }
-
-  const contenido = document.createElement("div");
-  contenido.className = "producto__contenido";
-
-  const titulo = document.createElement("h3");
-  titulo.textContent = producto.nombre;
-  contenido.append(titulo);
-
-  if (producto.descripcion) {
-    const descripcion = document.createElement("p");
-    descripcion.className = "producto__descripcion";
-    descripcion.textContent = producto.descripcion;
-    contenido.append(descripcion);
-  }
-
-  const variantes = document.createElement("ul");
-  variantes.className = "producto__variantes";
-
-  producto.variantes.forEach((variante) => {
-    const fila = document.createElement("li");
-    fila.className = "producto__variante";
-
-    const detalle = document.createElement("div");
-    detalle.className = "producto__detalle-variante";
-
-    const etiqueta = document.createElement("span");
-    etiqueta.textContent = variante.etiqueta;
-
-    const precio = document.createElement("strong");
-    precio.textContent = formatoPrecio.format(variante.precio);
-
-    const boton = document.createElement("button");
-    boton.className = "boton-elegir";
-    boton.type = "button";
-    boton.textContent = "Pedir";
-    boton.dataset.producto = producto.id;
-    boton.dataset.variante = variante.id;
-    boton.setAttribute(
-      "aria-label",
-      `Pedir ${producto.articulo} ${producto.nombre.toLowerCase()}, ${variante.etiqueta}, ${formatoPrecio.format(variante.precio)}`,
-    );
-
-    detalle.append(etiqueta, precio);
-    fila.append(detalle);
-
-    if (variante.id === "trozo") {
-      fila.classList.add("producto__variante--con-foto");
-      const espacioFoto = document.createElement("span");
-      espacioFoto.className = "producto__foto-trozo";
-      espacioFoto.setAttribute("aria-hidden", "true");
-      fila.append(espacioFoto);
-    }
-
-    fila.append(boton);
-    variantes.append(fila);
-  });
-
-  contenido.append(variantes);
-  tarjeta.append(contenido);
-  return tarjeta;
-}
-
-function renderizarProductos() {
-  listaProductos.replaceChildren(...datos.productos.map(crearTarjetaProducto));
-  observarTarjetas();
-}
-
 function observarTarjetas() {
-  const tarjetas = listaProductos.querySelectorAll(".revelar");
+  const tarjetas = listaProductos.querySelectorAll(".producto");
   const movimientoReducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (!("IntersectionObserver" in window) || movimientoReducido) {
-    tarjetas.forEach((tarjeta) => tarjeta.classList.add("visible"));
     return;
   }
 
@@ -154,7 +58,10 @@ function observarTarjetas() {
     { threshold: 0.12, rootMargin: "0px 0px -24px 0px" },
   );
 
-  tarjetas.forEach((tarjeta) => observador.observe(tarjeta));
+  tarjetas.forEach((tarjeta) => {
+    tarjeta.classList.add("revelar");
+    observador.observe(tarjeta);
+  });
 }
 
 function renderizarDisponibilidad() {
@@ -267,15 +174,16 @@ function mostrarActualizaciones() {
 }
 
 listaProductos.addEventListener("click", (evento) => {
-  const boton = evento.target.closest("[data-producto][data-variante]");
+  const enlace = evento.target.closest("a[data-producto][data-variante]");
 
-  if (!boton) {
+  if (!enlace) {
     return;
   }
 
-  selectorProducto.value = boton.dataset.producto;
+  evento.preventDefault();
+  selectorProducto.value = enlace.dataset.producto;
   actualizarSelectorVariantes();
-  selectorVariante.value = boton.dataset.variante;
+  selectorVariante.value = enlace.dataset.variante;
   actualizarOpcionesPedido();
   document.querySelector("#pedido").scrollIntoView({ behavior: "auto" });
   enlacePedido.focus({ preventScroll: true });
@@ -286,8 +194,8 @@ selectorVariante.addEventListener("change", actualizarEnlacePedido);
 selectorFecha.addEventListener("change", actualizarEnlacePedido);
 selectorSalsa.addEventListener("change", actualizarEnlacePedido);
 
-renderizarProductos();
 renderizarDisponibilidad();
 renderizarSelectorProductos();
 mostrarActualizaciones();
 enlaceHero.href = crearEnlaceWhatsApp(crearMensajeGeneral());
+observarTarjetas();
